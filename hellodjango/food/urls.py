@@ -1,6 +1,7 @@
 from . import views
 from django.urls import path
 
+app_name = 'food'
 urlpatterns = [
     # root is /food/
     path('', views.index, name="index"),

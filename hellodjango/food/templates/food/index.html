@@ -2,7 +2,8 @@
 {% for item in item_list %}
 <ul>
     <li>
-       <a href="{% url 'detail' item.id %}"> {{ item.id }} -- {{ item.item_name }} </a>
+        <!-- the food:detail is how we can namespace to avoid duplicate names. -->
+       <a href="{% url 'food:detail' item.id %}"> {{ item.id }} -- {{ item.item_name }} </a>
     </li>
 </ul>
     
