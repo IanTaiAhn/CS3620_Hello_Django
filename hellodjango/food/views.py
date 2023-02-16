@@ -11,8 +11,12 @@ def index(request):
     item_list = Item.objects.all()
     template = loader.get_template('food/index.html')
     context = {
+        # The key is how I access it in the template.
+        'item_list': item_list,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'food/index.html', context)
+#     return HttpResponse(template.render(context, request))
+# They both do the same thing but render syntax is cleaner.
 
 
 def item(request):
