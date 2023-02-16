@@ -25,3 +25,8 @@ def item(request):
 # Works as expected. The name of the function is how I cant control the routing.
 # def test(request):
 #     return HttpResponse('Testing')
+
+
+def detail(request, item_id):
+    # item_id is like a get variable in the url
+    return HttpResponse('This is id: %s' % item_id)
