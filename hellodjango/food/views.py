@@ -29,4 +29,9 @@ def item(request):
 
 def detail(request, item_id):
     # item_id is like a get variable in the url
-    return HttpResponse('This is id: %s' % item_id)
+    # We get from our database the item we want according to the url get variable~item_id
+    item = Item.objects.get(pk=item_id)
+    context = {
+        'item': item,
+    }
+    return render(request, 'food/detail.html', context)
