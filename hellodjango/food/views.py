@@ -21,7 +21,6 @@ def index(request):
 
 def item(request):
     return HttpResponse('Item')
-
 # Works as expected. The name of the function is how I cant control the routing.
 # def test(request):
 #     return HttpResponse('Testing')
