@@ -1,11 +1,22 @@
-<h1>Items</h1>
-{% for item in item_list %}
-<ul>
-    <li>
-        <!-- the food:detail is how we can namespace to avoid duplicate names. -->
-       <a href="{% url 'food:detail' item.id %}"> {{ item.id }} -- {{ item.item_name }} </a>
-    </li>
-</ul>
-    
-{% endfor %}
-
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'food/style.css'%}">
+</head>
+<body>
+    <h1>Items</h1>
+    {% for item in item_list %}
+        <ul>
+            <li>
+            <!-- the food:detail is how we can namespace to avoid duplicate names. -->
+            <a href="{% url 'food:detail' item.id %}"> {{ item.id }} -- {{ item.item_name }} </a>
+            </li>
+        </ul>
+    {% endfor %}
+</body>
+</html>
