@@ -9,14 +9,17 @@
   </head>
   <body>
     {% block body %} {% for item in item_list %}
-    <ul>
-      <li>
-        <!-- the food:detail is how we can namespace to avoid duplicate names. -->
-        <a href="{% url 'food:detail' item.id %}">
-          {{ item.id }} -- {{ item.item_name }}
-        </a>
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col-md-3 offset-md-2">
+        <img class="card" height="150px" src="{{item.item_image}}" />
+      </div>
+      <div class="col-md-4">
+        <h3>{{ item.item_name }}</h3>
+        <h5>{{ item.item_desc }}</h5>
+        <h5>${{ item.item_price }}</h5>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
     {% endfor %} {% endblock %}
   </body>
 </html>
