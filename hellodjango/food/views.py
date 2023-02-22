@@ -63,3 +63,17 @@ def update_item(request, id):
         return redirect('food:index')
 
     return render(request, 'food/item-form.html', {'form': form, 'item': item})
+
+
+def delete_item(request, id):
+    # We get the item that the request id is equal to in our ddatabase.
+    # What is the difference between pk or id?
+    item = Item.objects.get(pk=id)
+
+    # Upon the submitting of our form this code runs.
+    if request.method == 'POST':
+        item.delete()
+        return redirect('food:index')
+# We have access to the item variable because of the render path.
+# So in our html for item-delete we can use tags to access info from our database.
+    return render(request, 'food/item-delete.html', {'item': item})
