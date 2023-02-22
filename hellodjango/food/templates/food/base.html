@@ -20,7 +20,7 @@
     <nav class="navbar navbar-dark bg-dark px-4">
       <a href="{% url "food:index" %}" class="navbar-brand">Food App</a>
       <div class="d-flex text-primary">
-        <a href="#" class="px-2 text-decoration-none">Add Item</a>
+        <a href="{% url 'food:create_item' %}" class="px-2 text-decoration-none">Add Item</a>
         <a href="#" class="px-2 text-decoration-none">Delete Item</a>
         <a href="#" class="px-2 text-decoration-none">View Item</a>
       </div>
