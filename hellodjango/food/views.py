@@ -48,3 +48,18 @@ def create_item(request):
         return redirect('food:index')
 
     return render(request, 'food/item-form.html', {'form': form})
+
+# The id parameter here is associated with the id in our path url.
+
+
+def update_item(request, id):
+    # We get the item that the request id is equal to in our ddatabase.
+    # What is the difference between pk or id?
+    item = Item.objects.get(pk=id)
+    form = ItemForm(request.POST or None, instance=item)
+
+    if form.is_valid():
+        form.save()
+        return redirect('food:index')
+
+    return render(request, 'food/item-form.html', {'form': form, 'item': item})
