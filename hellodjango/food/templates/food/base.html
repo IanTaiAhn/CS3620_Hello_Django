@@ -23,6 +23,11 @@
         <a href="{% url 'food:create_item' %}" class="px-2 text-decoration-none">Add Item</a>
         <a href="#" class="px-2 text-decoration-none">Delete Item</a>
         <a href="#" class="px-2 text-decoration-none">View Item</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="px-2 text-decoration-none">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="px-2 text-decoration-none">Login</a>
+        {% endif %}
       </div>
     </nav>
 
