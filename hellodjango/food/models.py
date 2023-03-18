@@ -18,6 +18,5 @@ class Item(models.Model):
 
 # we are able to redirect to another page through this method.
 
-
-def get_absolute_url(self):
-    return reverse("food:detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("food:detail", kwargs={"pk": self.pk})

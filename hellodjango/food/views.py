@@ -5,6 +5,7 @@ from django.template import loader
 from .forms import ItemForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 
@@ -26,11 +27,6 @@ class IndexClassView(ListView):
     context_object_name = 'item_list'
 
 
-class FoodDetail(DetailView):
-    model = Item
-    template_name = 'food/detail.html'
-
-
 def item(request):
     return HttpResponse('Item')
 # Works as expected. The name of the function is how I cant control the routing.
@@ -48,6 +44,11 @@ def detail(request, item_id):
     return render(request, 'food/detail.html', context)
 
 
+class FoodDetail(DetailView):
+    model = Item
+    template_name = 'food/detail.html'
+
+
 def create_item(request):
     # We take the user request and either create a form, or create a none form.
     form = ItemForm(request.POST or None)
@@ -59,6 +60,16 @@ def create_item(request):
     return render(request, 'food/item-form.html', {'form': form})
 
 # The id parameter here is associated with the id in our path url.
+
+
+class CreateItem(CreateView):
+    model = Item
+    fields = ['item_name', 'item_desc', 'item_price', 'item_image']
+    template_name = 'food/item-form.html'
+
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        return super().form_valid(form)
 
 
 def update_item(request, id):
