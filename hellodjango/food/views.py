@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Item
 from django.template import loader
 from .forms import ItemForm
+from django.views.generic.list import ListView
 # Create your views here.
 
 
@@ -16,6 +17,12 @@ def index(request):
     return render(request, 'food/index.html', context)
 #   return HttpResponse(template.render(context, request))
 # They both do the same thing but render syntax is cleaner.
+
+
+class IndexClassView(ListView):
+    model = Item
+    template_name = 'food/index.html'
+    context_object_name = 'item_list'
 
 
 def item(request):

@@ -4,7 +4,9 @@ from django.urls import path
 app_name = 'food'
 urlpatterns = [
     # root is /food/
-    path('', views.index, name="index"),
+    # path('', views.index, name="index"), # these two index urls are the same, but this one is a fucntion based view.
+    # this is a class based view.
+    path('', views.IndexClassView.as_view(), name="index"),
     path('item', views.item, name="item"),
     # The path is what our client side sees, and is the URL
     # The views.<'name'> is how we connect the path to our view which proccess the request, and renders the html.
