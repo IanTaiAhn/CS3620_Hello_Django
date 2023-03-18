@@ -4,6 +4,7 @@ from .models import Item
 from django.template import loader
 from .forms import ItemForm
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 # Create your views here.
 
 
@@ -23,6 +24,11 @@ class IndexClassView(ListView):
     model = Item
     template_name = 'food/index.html'
     context_object_name = 'item_list'
+
+
+class FoodDetail(DetailView):
+    model = Item
+    template_name = 'food/detail.html'
 
 
 def item(request):
