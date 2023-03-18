@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 # Create your models here.
 
 
@@ -14,3 +15,9 @@ class Item(models.Model):
     item_price = models.IntegerField()
     item_image = models.CharField(
         max_length=500, default="https://foursquare.com/img/categories/food/default_256.png")
+
+# we are able to redirect to another page through this method.
+
+
+def get_absolute_url(self):
+    return reverse("food:detail", kwargs={"pk": self.pk})
